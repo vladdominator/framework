@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx wdio"
+    "test": "cross-env NODE_ENV=PRP npx wdio"
   },
   "keywords": [],
   "author": "vladdominator",
@@ -30,6 +30,7 @@
     "mocha-logger": "^1.0.8"
   },
   "dependencies": {
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "cross-env": "^7.0.3"
   }
 }
