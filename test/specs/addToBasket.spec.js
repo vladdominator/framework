@@ -10,6 +10,7 @@ describe('Add to Basket.', function ()  {
   let productPage;
   let basketPage;
   const obj = {};
+  
 
   beforeEach(function () {
     const props = DataReaderService.getTestData('addToBasket.properties');
