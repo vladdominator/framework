@@ -1,22 +1,20 @@
-import path from "path";
+import path from 'path';
 
-require("dotenv").config({path: path.resolve(getEnv(process.env.NODE_ENV))})
+require('dotenv').config({ path: path.resolve(getEnv(env.NODE_ENV)) });
 
 function getEnv(env) {
   switch (env?.toUpperCase()) {
-    case "PRP":
+    case 'PRP':
       return '.env.prp';
-    case "DEV":
-      return ".env";
+    case 'DEV':
+      return '.env';
     default:
       return '.env';
   }
 }
 const data = {
-  browser: process.env.BROWSER,
-  mode: process.env.NODE_ENV === "PRP" ? "prp" : "dev",
-}
+  browser: env.BROWSER,
+  mode: env.NODE_ENV === 'PRP' ? 'prp' : 'dev',
+};
 
-export {data};
-
-
+export { data };
