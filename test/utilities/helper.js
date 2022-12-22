@@ -3,19 +3,21 @@ export const waitForTextChange = (el, text, timeout) => {
     function () {
       return el.getText() === text;
     },
-    {timeout: 9000}
+    { timeout: 20000 }
   );
 };
 
 export const waitAndClick = (el, timeout) => {
-  el.waitForDisplayed({timeout: 9000});
+  el.waitForDisplayed({ timeout: 20000 });
   el.click();
 };
 
 export const waitElement = (el, timeout) => {
-  el.waitUntil(function () {
+  el.waitUntil(
+    function () {
       return !!el;
-    }, {timeout: 9000}
-  )
-  el.waitForDisplayed()
-}
+    },
+    { timeout: 20000 }
+  );
+  el.waitForDisplayed();
+};

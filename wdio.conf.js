@@ -14,7 +14,7 @@ exports.config = {
   logLevel: 'warn',
   bail: 0,
   baseUrl: 'https://pandorarussia.ru/',
-  waitforTimeout: 15000,
+  waitforTimeout: 20000,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
   services: ['browserstack'],
