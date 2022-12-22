@@ -2,15 +2,15 @@ import {DEFAULT_BASKET_PAGE_URL} from "../../constants/contstants";
 import {ProductPage} from "../pages/ProductPage";
 import {BasketPage} from "../pages/BasketPage";
 import {waitAndClick, waitElement} from "../utilities/helper";
-import {expect} from "chai";
 import {DataReaderService} from "../services/services.js";
+import {expect} from "chai";
 import {logger} from "../logger";
 
-describe('Add to Basket.', function ()  {
+describe('Add to Basket.', function () {
   let productPage;
   let basketPage;
   const obj = {};
-  
+
 
   beforeEach(function () {
     const props = DataReaderService.getTestData('addToBasket.properties');
@@ -21,35 +21,26 @@ describe('Add to Basket.', function ()  {
     basketPage = new BasketPage(obj.DEFAULT_PRODUCT_SIZE);
   })
 
-  it('Should open Product page.', () => {
-    productPage.openPage(obj.DEFAULT_PRODUCT_PAGE_URL);
-  });
-
-  it('Should check exists size.', () => {
-    waitElement(productPage.getProductOptions())
-  })
-
-  it('Should choose size.', () => {
-    waitAndClick(productPage.getSizeOptions());
-  })
-
-  it('Should add to basket', () => {
-    waitAndClick(productPage.getBasketButton());
-  })
-
-  it('Should appear success message.', () => {
-    waitElement(productPage.getSuccessMessage());
-  })
-
-  it('Should be update count icon', () => {
-    waitElement(productPage.getUpdateCountIcon());
-  })
-
-  it('Should open Basket Page', () => {
-    basketPage.openPage(DEFAULT_BASKET_PAGE_URL);
-  })
-
   it('Should be correct size in the basket page.', () => {
-    waitElement(basketPage.getSize());
+    productPage.openPage(obj.DEFAULT_PRODUCT_PAGE_URL);
+    waitElement(productPage.getProductOptions())
+    waitAndClick(productPage.getSizeOptions());
+    waitAndClick(productPage.getBasketButton());
+    waitElement(productPage.getSuccessMessage());
+    waitElement(productPage.getUpdateCountIcon());
+    basketPage.openPage(DEFAULT_BASKET_PAGE_URL);
+    expect(waitElement(basketPage.getSize()).getText()).to.be.equal(obj.DEFAULT_PRODUCT_SIZE);
+  })
+
+  it('Should be correct name in the basket page.', () => {
+    productPage.openPage(obj.DEFAULT_PRODUCT_PAGE_URL);
+    waitElement(productPage.getProductOptions())
+    const text = waitElement(productPage.getName()).getText();
+    waitAndClick(productPage.getSizeOptions());
+    waitAndClick(productPage.getBasketButton());
+    waitElement(productPage.getSuccessMessage());
+    waitElement(productPage.getUpdateCountIcon());
+    basketPage.openPage(DEFAULT_BASKET_PAGE_URL);
+    expect(waitElement(basketPage.getName()).getText()).to.be.equal(text);
   })
 });

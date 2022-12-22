@@ -8,12 +8,12 @@ class ProductPage extends BasePage {
   }
 
   getProductOptions() {
-    logger.info("Checking the production options.");
+    logger.info("Checking the production option.");
     return $(`//*[@id='product-options-wrapper']`);
   }
 
   getSizeOptions() {
-    logger.info("Checking the size options.");
+    logger.info("Checking the size option.");
     return $(`//*[@class='swatch-attribute-options clearfix']/div[text()='${this.size}']`);
   }
 
@@ -30,6 +30,11 @@ class ProductPage extends BasePage {
   getUpdateCountIcon() {
     logger.info("Checking the update count to 1 in basket.");
     return $(`//*[@class='minicart-wrapper']//*[@class='counter-number' and text()='1']`);
+  }
+
+  getName() {
+    logger.info("Checking the name option.");
+    return $(`//*[@class='page-title']/span`);
   }
 }
 
