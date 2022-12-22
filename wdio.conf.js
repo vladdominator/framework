@@ -3,7 +3,7 @@ const path = require("path");
 require("dotenv").config({path: path.resolve(getEnv(process.env.NODE_ENV))})
 
 function getEnv(env) {
-  switch (env?.toUpperCase()) {
+  switch (env) {
     case "PRP":
       return '.env.prp';
     case "DEV":
