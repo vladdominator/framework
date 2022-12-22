@@ -1,6 +1,21 @@
+const path = require("path");
+
+require("dotenv").config({path: path.resolve(getEnv(process.env.NODE_ENV))})
+
+function getEnv(env) {
+  switch (env?.toUpperCase()) {
+    case "PRP":
+      return '.env.prp';
+    case "DEV":
+      return ".env";
+    default:
+      return '.env';
+  }
+}
+
 exports.config = {
-  user: 'bsuser_jKv2lu',
-  key: '9Sovy8pwQQisntTfe9PN',
+  user: 'vladislavzhilins_X6DCEe',
+  key: 'n5jT4iZV4pvw7rB7Wgy7',
   runner: 'local',
   specs: ['./test/specs/**/*.js'],
   exclude: [],
@@ -8,7 +23,7 @@ exports.config = {
   capabilities: [
     {
       maxInstances: 5,
-      browserName: 'chrome',
+      browserName: process.env.BROWSER,
     },
   ],
   logLevel: 'warn',

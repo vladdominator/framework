@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx wdio"
+    "test": "cross-env NODE_ENV=PRP npx wdio"
   },
   "keywords": [],
   "author": "vladdominator",
